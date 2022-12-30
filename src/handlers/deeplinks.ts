@@ -26,7 +26,7 @@ import {
 } from '@/helpers/validators';
 import { Navigation } from '@/navigation';
 import { scheduleActionOnAssetReceived } from '@/redux/data';
-import { emitAssetRequest, emitChartsRequest } from '@/redux/explorer';
+import { emitChartsRequest, fetchAssetPrices } from '@/redux/explorer';
 import { ETH_ADDRESS } from '@/references';
 import Routes from '@/navigation/routesNames';
 import { ethereumUtils } from '@/utils';
@@ -95,7 +95,7 @@ export default async function handleDeeplink(
             if (asset) {
               action(asset);
             } else {
-              dispatch(emitAssetRequest(address));
+              dispatch(fetchAssetPrices(address));
               dispatch(emitChartsRequest(address));
               scheduleActionOnAssetReceived(address, action);
             }

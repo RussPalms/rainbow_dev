@@ -7,7 +7,7 @@ import { CurrencySelectionTypes, ExchangeModalTypes, Network } from '@/helpers';
 import { updatePrecisionToDisplay } from '@/helpers/utilities';
 import { useSwapDerivedValues, useSwapInputHandlers } from '@/hooks';
 import { useNavigation } from '@/navigation';
-import { emitAssetRequest } from '@/redux/explorer';
+import { fetchAssetPrices } from '@/redux/explorer';
 import {
   flipSwapCurrencies,
   updateSwapDepositCurrency,
@@ -198,7 +198,7 @@ export default function useSwapCurrencyHandlers({
           }
         : null;
 
-      dispatch(emitAssetRequest(newInputCurrency.mainnet_address));
+      dispatch(fetchAssetPrices(newInputCurrency.mainnet_address));
       dispatch(
         updateSwapInputCurrency(newInputCurrency, crosschainSwapsEnabled)
       );
@@ -217,7 +217,7 @@ export default function useSwapCurrencyHandlers({
           }
         : null;
 
-      dispatch(emitAssetRequest(newOutputCurrency.mainnet_address));
+      dispatch(fetchAssetPrices(newOutputCurrency.mainnet_address));
       dispatch(
         updateSwapOutputCurrency(newOutputCurrency, crosschainSwapsEnabled)
       );

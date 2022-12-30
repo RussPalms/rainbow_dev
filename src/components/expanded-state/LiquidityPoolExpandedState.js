@@ -33,7 +33,7 @@ import {
   usePoolDetails,
   useTotalFeeEarnedPerAsset,
 } from '@/hooks';
-import { emitAssetRequest } from '@/redux/explorer';
+import { fetchAssetPrices } from '@/redux/explorer';
 
 import { ETH_ADDRESS } from '@/references';
 import styled from '@/styled-thing';
@@ -95,7 +95,7 @@ const LiquidityPoolExpandedState = () => {
 
   useEffect(() => {
     dispatch(
-      emitAssetRequest(
+      fetchAssetPrices(
         tokenAddresses.map(tokenAddress => tokenAddress.toLowerCase())
       )
     );

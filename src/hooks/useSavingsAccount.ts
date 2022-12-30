@@ -11,7 +11,7 @@ import { COMPOUND_ACCOUNT_AND_MARKET_QUERY } from '@/apollo/queries';
 import { AssetTypes } from '@/entities';
 import { multiply } from '@/helpers/utilities';
 import { parseAssetName, parseAssetSymbol } from '@/parsers';
-import { emitAssetRequest } from '@/redux/explorer';
+import { fetchAssetPrices } from '@/redux/explorer';
 import { AppState } from '@/redux/store';
 import { CDAI_CONTRACT, DAI_ADDRESS, ETH_ADDRESS } from '@/references';
 import { ethereumUtils, getTokenMetadata } from '@/utils';
@@ -159,7 +159,7 @@ export default function useSavingsAccount(includeDefaultDai: boolean) {
       const underlyingAddresses = accountTokens.map(
         (token: any) => token?.underlying?.address
       );
-      dispatch(emitAssetRequest([DAI_ADDRESS, ...underlyingAddresses]));
+      dispatch(fetchAssetPrices([DAI_ADDRESS, ...underlyingAddresses]));
       setBackupSavings(result);
       return result;
     } else if (loading && !isNil(backupSavings)) {
