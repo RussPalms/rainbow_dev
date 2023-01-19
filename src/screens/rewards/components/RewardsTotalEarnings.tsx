@@ -1,15 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { RewardsSectionCard } from '@/screens/rewards/components/RewardsSectionCard';
-import {
-  Bleed,
-  Box,
-  Columns,
-  Inline,
-  Rows,
-  Stack,
-  Text,
-} from '@/design-system';
+import { Box, Columns, Inline, Rows, Stack, Text } from '@/design-system';
 import { useTheme } from '@/theme';
 import { RewardsProgressBar } from '@/screens/rewards/components/RewardsProgressBar';
 import * as i18n from '@/languages';
@@ -36,7 +28,7 @@ export const RewardsTotalEarnings: React.FC<Props> = ({
   return (
     <Box paddingBottom="12px">
       <RewardsSectionCard>
-        <Rows space="16px">
+        <Stack space="16px">
           <Columns>
             <Stack space="12px" alignHorizontal="left">
               <Text color="labelTertiary" size="15pt" weight="semibold">
@@ -63,7 +55,6 @@ export const RewardsTotalEarnings: React.FC<Props> = ({
             progress={Math.min(totalEarningsToken / TOTAL_SUPPLY, 1)}
           />
           <Inline space="6px" alignVertical="center">
-            <Bleed vertical="3px">
             <Box
               as={Image}
               source={{
@@ -75,7 +66,6 @@ export const RewardsTotalEarnings: React.FC<Props> = ({
               background="surfaceSecondaryElevated"
               shadow="12px"
             />
-          </Bleed>
             <Text
               color={{ custom: colors.networkColors.optimism }}
               size="15pt"
@@ -97,7 +87,7 @@ export const RewardsTotalEarnings: React.FC<Props> = ({
               </Text>
             </Text>
           </Inline>
-        </Rows>
+        </Stack>
       </RewardsSectionCard>
     </Box>
   );
