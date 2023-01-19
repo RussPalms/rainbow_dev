@@ -3,6 +3,7 @@ import { RewardsTitle } from '@/screens/rewards/components/RewardsTitle';
 import { RewardsTotalEarnings } from '@/screens/rewards/components/RewardsTotalEarnings';
 import { RewardsResponseType } from '@/screens/rewards/types/RewardsResponseType';
 import { RewardsPendingEarnings } from '@/screens/rewards/components/RewardsPendingEarnings';
+import { RewardsStats } from './RewardsStats';
 
 type Props = { data: RewardsResponseType };
 
@@ -20,6 +21,11 @@ export const RewardsContent: React.FC<Props> = ({ data }) => {
       <RewardsPendingEarnings
         pendingEarningsUsd={data.earnings.pending.usd}
         nextAirdropTimestamp={data.meta.next_distribution}
+      />
+      <RewardsStats
+        position={data.stats.position.current}
+        positionChange={data.stats.position.change['24h']}
+        actions={data.stats.actions}
       />
     </>
   );

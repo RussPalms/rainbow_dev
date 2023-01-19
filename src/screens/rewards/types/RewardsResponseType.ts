@@ -56,7 +56,7 @@ type OpRewardsPosition = {
 
 type OpRewardsActionType = 'bridge' | 'swap';
 
-type OpRewardsAction = {
+export type OpRewardsAction = {
   type: OpRewardsActionType;
   amount: Pick<OpRewardsValue, 'usd'>;
   reward_percent: number;
